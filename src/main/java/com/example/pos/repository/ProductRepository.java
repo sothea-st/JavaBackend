@@ -57,7 +57,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                         " pc.brand_id ,pc.pro_name_en ,pc.pro_name_kh ,pc.cost,pc.price ,  \r\n" + //
                         " pc.product_status ,pc.discount ,pc.code_out_stock ,pc.code_expired    \r\n" + //
                         " from pos_product pc where pc.status=true and pc.is_deleted=false  \r\n" + //
-                        " and pc.pro_name_en  ilike %?%")
+                        " and pc.pro_name_en  ilike %?% limit 10")
         List<ProductProjection> searchProductByName(String proNameEn);
 
         @Query(nativeQuery = true, value = "select pc.id,pc.barcode,pc.cat_id ,pc.brand_id ,pc.flag ,pc.weight ,pc.pro_image_name ,  \r\n"
